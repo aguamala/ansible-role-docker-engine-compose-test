@@ -1,0 +1,6 @@
+version: '2'
+services:
+  test:
+    image: aguamala/centos-systemd
+    command: echo hola test!
+    

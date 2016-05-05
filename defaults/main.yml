@@ -1,0 +1,7 @@
+---
+# defaults file for ansible-role-docker-engine-compose-test
+
+
+docker_engine_engine_compose_test:
+  user: "{{ docker_engine_engine_compose_test_user | default('centos') }}"
+  compose_dir: "/home/{{ docker_engine_engine_compose_test_user | default('centos') }}/{{ devops_docker_utils_compose_dir | default('test') }}"

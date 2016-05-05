@@ -1,0 +1,20 @@
+---
+# tasks file for ansible-role-docker-engine-compose-test
+
+- name: create compose dir
+  file: path="{{ docker_engine_engine_compose_test.compose_dir }}" state=directory recurse=yes owner="{{ docker_engine_engine_compose_test.user }}" group="{{ docker_engine_engine_compose_test.user }}"
+
+- name: copy docker-compose test
+  template: src=docker-compose.yml dest="{{ docker_engine_engine_compose_test.compose_dir }}" owner="{{ docker_engine_engine_compose_test.user }}" group="{{ docker_engine_engine_compose_test.user }}"
+
+- name: test docker-compose pull
+  shell: /usr/bin/docker-compose pull chdir="{{ docker_engine_engine_compose_test.compose_dir }}"
+
+- name: test docker-compose up
+  shell: /usr/bin/docker-compose up chdir="{{ docker_engine_engine_compose_test.compose_dir }}"
+
+- name: test docker-compose remove
+  shell: /usr/bin/docker-compose rm -v -f chdir="{{ docker_engine_engine_compose_test.compose_dir }}"
+
+- name: rm test compose_dir
+  file: path="{{ docker_engine_engine_compose_test.compose_dir }}" state=absent
