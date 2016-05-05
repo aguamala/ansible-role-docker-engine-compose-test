@@ -1,6 +1,5 @@
 version: '2'
 services:
   test:
-    image: aguamala/centos-systemd
+    image: aguamala/centos-systemd:7
     command: echo hola test!
-    
